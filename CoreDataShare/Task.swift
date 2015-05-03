@@ -8,13 +8,12 @@
 
 import Foundation
 import CoreData
+import CoreDataShare
 
 @objc(Task)
 class Task: NSManagedObject {
-
-    @NSManaged public var date: NSDate
-    @NSManaged public var descriptionName: String
-    @NSManaged public var isCompleted: NSNumber
-    @NSManaged public var titleName: String
-
+    @NSManaged var date: NSDate
+    @NSManaged var descriptionName: String
+    @NSManaged var isCompleted: NSNumber
+    @NSManaged var titleName: String
 }

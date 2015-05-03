@@ -8,18 +8,19 @@
 
 import UIKit
 import CoreData
+import CoreDataShare
 
 public class CoreDataManager: NSObject {
     
     public class var sharedInstance : CoreDataManager {
         struct Static {
-            static var onceToken : dispatch_once_t = 0
+            static var token : dispatch_once_t = 0
             static var instance : CoreDataManager? = nil
         }
-        dispatch_once(&Static.onceToken) {
+        dispatch_once(&Static.token) {
             Static.instance = CoreDataManager()
         }
-            return Static.instance!
+        return Static.instance!
     }
     // MARK: - Core Data stack
     
@@ -41,7 +42,7 @@ public class CoreDataManager: NSObject {
 //        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
 //        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("TaskItWatch.sqlite")
 
-        let containerPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.TaskItWatch.Eliot.Arntz.bitfountain")?.path
+        let containerPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.TaskItWatch.Scott.Taylor.CarnabyLabs")?.path
         let sqlitePath = NSString(format: "%@/%@", containerPath!, "TaskItWatch")
         let url = NSURL(fileURLWithPath: sqlitePath as String)
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
